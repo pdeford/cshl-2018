@@ -44,6 +44,8 @@ To identify which gene is the closest to each ChIP peak, we will use the **Close
 5. `Execute`
 6. Rename the output `Closest Genes to GATA2 Peaks`
 
+Repeat for **FOXA1** and **CTCF**.
+
 ### Visualization and Gene sets
 
 At this stage we have identified the genes that are the most proximal to each of the peaks from our ChIP-seq experiments. One question we may be interested in is where these peaks occur relative the these genes. We can visualize this by plotting the distribution of distances.
@@ -53,6 +55,7 @@ At this stage we have identified the genes that are the most proximal to each of
 3. Create the histogram with **Graph/Display Data** `>` **Histogram w ggplot2**. Label the x-axis: _"Distance to nearest gene"_, and the y-axis: _"Log10 Frequency"_. Set the **Bin width for plotting** to 1000. Expand the **Advanced Options**:
   - **Plot counts or density**: `Plot normalized frequency on the y-axis`
   - **Data transformation**: `Log10(value+1) transform my data`
+4. Repeat for **FOXA1** and **CTCF**.
 
 Alternately, you might be interested in those genes that are nearby these ChIP peaks for other analyses. A list of gene names can be extracted, again using the **Cut columns from a table (cut)** tool, this time on the name column from `Closest Genes to GATA2 Peaks`.
 
@@ -99,14 +102,3 @@ For each promoter, we have counted the number of overlaps with each ChIP dataset
 #### Create the heatmap
 1. **Graph/Display Data** `>` **heatmap2**
 2. **Coloring groups**: `White to blue`
-
-
-
-
-!!!!!!!!! I should update the datasets to include histone marks !!!!!!!!!!!!
-
-
-
-
-
-
