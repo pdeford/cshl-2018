@@ -11,6 +11,11 @@ This data was originally produced by the Encode project. It is derived from K562
 - FoxA1 (ENCSR819LHG)
 - GATA2 (ENCSR000DKA)
 
+As well as for three histone marks:
+- H3K4me3 (ENCSR000DWD)
+- H3K27me3 (ENCSR000EWB)
+- H3K9ac (ENCSR000EVZ)
+
 In the data library, there is also an annotation file containing the NIH RefSeq genes from the UCSC table browser. All of the data is mapped to `hg38`.
 
 ## Annotate peaks with _closest_ gene
