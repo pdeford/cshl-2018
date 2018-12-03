@@ -65,7 +65,7 @@ At this stage we have identified the genes that are the most proximal to each of
 
 ![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/6-histogram.png)
 ![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/6b-histogram.png)
-![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/7-example plot.png)
+![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/7-example%20plot.png)
 
 Alternately, you might be interested in those genes that are nearby these ChIP peaks for other analyses. A list of gene names can be extracted, again using the **Cut columns from a table (cut)** tool, this time on the name column from `Closest Genes to GATA2 Peaks`.
 
@@ -95,8 +95,8 @@ Here again we will use the **bedtools** utilities to identify how many ChIP peak
 4. **For each entry in A, report the number of overlaps with B.**: `Yes`.
 5. `Execute` and rename the output files in the style `GATA2 counts in promoters`
 
-![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/9-intersect intervals.png)
-![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/9b-intersect intervals.png)
+![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/9-intersect%20intervals.png)
+![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/9b-intersect%20intervals.png)
 
 
 ### Visualize
