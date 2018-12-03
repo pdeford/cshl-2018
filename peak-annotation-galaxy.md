@@ -16,7 +16,9 @@ As well as for three histone marks:
 - H3K27me3 (ENCSR000EWB)
 - H3K9ac (ENCSR000EVZ)
 
-In the data library, there is also an annotation file containing the NIH RefSeq genes from the UCSC table browser. All of the data is mapped to `hg38`.
+In the data library, there is also an annotation file containing the NIH RefSeq genes from the UCSC table browser. All of the data is mapped to `hg38`. After importing the data, I would recommend tagging each file with the factor targeted. Something like the following:
+
+![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/1-tagged-input.png)
 
 ## Annotate peaks with _closest_ gene
 
@@ -33,6 +35,8 @@ The basic operations we will be performing will involve a number of pairwise com
 3. `Execute`
 4. Rename the files to show that they are sorted. E.g. `Sorted GATA2 Peaks` or `Sorted RefSeq Genes`
 
+![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/2-sortbed.png)
+
 ### Annotate the peaks
 
 To identify which gene is the closest to each ChIP peak, we will use the **ClosestBED** tool. One important functionality of this tool is that it can also report the distance between each peak and the nearest gene. If the peak and gene overlap, the reported distance will be 0, otherwise the value is the absolute distance. If you knew the orientation of the binding sites, you could even determine if the gene was upstream or downstream of the peak/binding site. This value can be useful for downstream analysis so we will choose to include it.
@@ -43,6 +47,8 @@ To identify which gene is the closest to each ChIP peak, we will use the **Close
 4. **In addition to the closest feature in B, report its distance to A as an extra column**: `Yes`
 5. `Execute`
 6. Rename the output `Closest Genes to GATA2 Peaks`
+
+![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/3-closestbed.png)
 
 Repeat for **FOXA1** and **CTCF**.
 
@@ -56,6 +62,10 @@ At this stage we have identified the genes that are the most proximal to each of
   - **Plot counts or density**: `Plot normalized frequency on the y-axis`
   - **Data transformation**: `Log10(value+1) transform my data`
 4. Repeat for **FOXA1** and **CTCF**.
+
+![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/6-histogram.png)
+![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/6b-histogram.png)
+![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/7-example plot.png)
 
 Alternately, you might be interested in those genes that are nearby these ChIP peaks for other analyses. A list of gene names can be extracted, again using the **Cut columns from a table (cut)** tool, this time on the name column from `Closest Genes to GATA2 Peaks`.
 
@@ -73,6 +83,8 @@ There are many definitions for promoters. Some definitions rely on functional ch
 4. **Length of the flanking region(s)**: `1500`
 5. `Execute` and rename output `Gene Promoters`
 
+![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/8-getflanks.png)
+
 ### Intersect promoters with ChIP peaks
 
 Here again we will use the **bedtools** utilities to identify how many ChIP peaks overlap each promoter. We will specify that we want to know how many peaks overlap each promoter, even if that value is 0.
@@ -82,6 +94,10 @@ Here again we will use the **bedtools** utilities to identify how many ChIP peak
 3. **File(s) B to intersect with A**: Use the batch mode to select all of the sorted ChIP peaks.
 4. **For each entry in A, report the number of overlaps with B.**: `Yes`.
 5. `Execute` and rename the output files in the style `GATA2 counts in promoters`
+
+![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/9-intersect intervals.png)
+![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/9b-intersect intervals.png)
+
 
 ### Visualize
 
@@ -99,6 +115,11 @@ For each promoter, we have counted the number of overlaps with each ChIP dataset
 8. **Value to put in unpaired (empty) fields**: `-1`
 9. `Execute` and rename `Promoter-peak count matrix`
 
+![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/10-multi-join.png)
+![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/10b-multi-join.png)
+
 #### Create the heatmap
 1. **Graph/Display Data** `>` **heatmap2**
 2. **Coloring groups**: `White to blue`
+
+![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/11-heatmap2.png)
