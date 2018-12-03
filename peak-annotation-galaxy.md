@@ -123,3 +123,4 @@ For each promoter, we have counted the number of overlaps with each ChIP dataset
 2. **Coloring groups**: `White to blue`
 
 ![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/11-heatmap2.png)
+![](https://raw.githubusercontent.com/pdeford/cshl-2018/master/img/12-exampleHeatmap.png)
